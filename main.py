@@ -1,14 +1,11 @@
 import requests
 from bs4 import BeautifulSoup
-
-URL = "https://lajumate.ro/cauta_casa_ordonare-dupa-data-descrescator.html"
-
-headers = {
-    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36'
-}
+from request_model import RequestModel
 
 try:
-    page = requests.get(URL, headers=headers)
+    rq = RequestModel(path='resources/ConfigFile.properties', request_section='RequestSection')
+    headers = {'User-Agent': rq.headers}
+    page = requests.get(rq.hostname + "casa" + rq.params, headers=headers)
     page.raise_for_status()  # Raise an exception if the request was not successful
 
     soup = BeautifulSoup(page.content, "html.parser")
@@ -28,7 +25,3 @@ except requests.exceptions.RequestException as e:
     print(f"Request Exception: {e}")
 except Exception as e:
     print(f"An error occurred: {e}")
-
-
-
-
