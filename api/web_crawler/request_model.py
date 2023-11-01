@@ -1,4 +1,4 @@
-from load_properties import load_properties
+from .load_properties import load_properties
 
 
 class RequestModel:
