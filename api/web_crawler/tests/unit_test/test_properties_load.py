@@ -1,4 +1,4 @@
-from load_properties import load_properties
+from api.web_crawler.load_properties import load_properties
 
 
 def test_hostname_retrieval():
