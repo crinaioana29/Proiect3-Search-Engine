@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Search Word</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'search.css' %}">
+</head>
+<body>
+<form id="searchForm">
+    <label for="word" style="padding: 20px;">Search Engine P3</label>
+    <input type="text" id="word" name="word"><br><br>
+
+    <input type="button" value="Submit" onclick="submitForm()">
+</form>
+<script>
+    function submitForm(event) {
+        event.preventDefault(); // Prevent the form from submitting as a GET request
+        const word = document.getElementById("word").value;
+        const newPageURL = `http://localhost:8021/v1/api/products/${encodeURIComponent(word)}`;
+        window.location.href = newPageURL;
+    }
+
+    // Add an event listener for the form submission
+    document.getElementById("searchForm").addEventListener("submit", function (event) {
+        submitForm(event);
+    });
+
+    // Add an event listener for the Enter key press
+    document.getElementById("word").addEventListener("keydown", function (event) {
+        if (event.key === "Enter") {
+            event.preventDefault(); // Prevent the form from submitting
+            submitForm(event);
+        }
+    });
+</script>
+</body>
+</html>

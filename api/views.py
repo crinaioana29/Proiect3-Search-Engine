@@ -27,3 +27,7 @@ def product_list_template(request, word=None):
         template = loader.get_template("api/../templates/home.html")
         # Render the HTML template with JSON data
         return HttpResponse(template.render({'json_data': json_new_data}, request))
+
+
+def index(request):
+    return render(request,'api/../templates/index.html')
