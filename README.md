@@ -1,5 +1,4 @@
 # Proiect 3 - Search Engine
-Status: In development.
 
 Proiectul este bazat pe un ideea unui search-engine.
 
